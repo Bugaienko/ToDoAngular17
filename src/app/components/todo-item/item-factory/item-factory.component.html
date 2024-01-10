@@ -1,0 +1,17 @@
+@switch (todoItem.status) {
+  @case (TodoStatus.IN_PROGRESS) {
+    <app-item-in-progress [index]="index" [todoItem]="todoItem"></app-item-in-progress>
+  }
+  @case (TodoStatus.NOT_STARTED) {
+    <app-item-not-started [index]="index" [todoItem]="todoItem"></app-item-not-started>
+  }
+  @case (TodoStatus.DONE) {
+    <app-item-done [index]="index" [todoItem]="todoItem"></app-item-done>
+  }
+
+}
+
+<div class="item">
+  <div></div>
+  <span class="item__title"> {{ todoItem.title }}</span>
+</div>

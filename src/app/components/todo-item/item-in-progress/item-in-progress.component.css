@@ -1,0 +1,7 @@
+.item {
+  background-color: #c3d1f5 !important;
+
+  & __title {
+    color: #062c64 !important;
+  }
+}
