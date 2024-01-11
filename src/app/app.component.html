@@ -12,7 +12,12 @@
   </div>
 
   @for (group of todoGroups; track todoGroups; let i = $index) {
-    <app-todo-group [index]="i" [todoGroup]="group" (changeTitleEvent)="handleChangeTitle($event)"></app-todo-group>
+    <app-todo-group
+      [index]="i"
+      [todoGroup]="group"
+      (changeTitleEvent)="handleChangeTitle($event)"
+      (deleteGroup)="handleDeleteGroup($event)"
+    ></app-todo-group>
   }
 
 </main>

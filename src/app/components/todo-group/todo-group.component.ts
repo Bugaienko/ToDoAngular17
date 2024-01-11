@@ -3,7 +3,7 @@ import {CommonModule} from "@angular/common";
 import {TodoItemBase} from "../todo-item/todo-item-base.directive";
 import {TodoGroup} from "../../../interfaces/todo-group.interface";
 import {ItemFactoryComponent} from "../todo-item/item-factory/item-factory.component";
-import {FormControl, FormsModule} from "@angular/forms";
+import {FormsModule} from "@angular/forms";
 
 @Component({
   selector: 'app-todo-group',
@@ -28,6 +28,8 @@ export class TodoGroupComponent implements OnInit {
     index: number
   }>();
 
+  @Output() deleteGroup = new EventEmitter<number>;
+
   public isShowTitle = true;
 
   public groupTitle?: string;
@@ -47,6 +49,10 @@ export class TodoGroupComponent implements OnInit {
   public onEnterValue() {
     this.isShowTitle = true;
     this.changeTitleEvent.emit({value: this.groupTitle!, index: this.index})
+  }
+
+  public onDeleteGroup() {
+    this.deleteGroup.emit(this.index);
   }
 
 }
