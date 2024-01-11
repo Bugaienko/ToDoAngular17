@@ -32,12 +32,12 @@ export class AppComponent {
           },
           {
             title: 'Сделать вторую часть',
-            description: 'Делаем планировщик задач',
+            description: 'Вторая задача из пакета',
             status: TodoStatus.NOT_STARTED
           },
           {
             title: 'Освоить Angular',
-            description: 'Делаем планировщик задач',
+            description: 'Почти закончили',
             status: TodoStatus.DONE
           },
         ]

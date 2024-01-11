@@ -1,6 +1,22 @@
-<div class="item">
-  <img class="item__img" ngSrc="assets/icons/in_progress.svg" alt="in progress" height="35" width="35">
-  <span class="item__title"> {{ todoItem.title }}</span>
-<!--  <span>Статус: {{todoItem.status}}</span>-->
-<!--  <span>Индекс: {{index}}</span>-->
+<div class="item" (click)="isShowDescription = !isShowDescription">
+  <div class="item__header">
+    <img class="item__img" ngSrc="assets/icons/in_progress.svg" alt="in progress" height="35" width="35">
+    <span class="item__title"> {{ todoItem.title }}</span>
+    <span class="item__hide"
+    [ngClass]="isShowDescription ? 'item__alt-hide' : ''"
+    >></span>
+  </div>
+
+  @if (!isShowDescription) {
+    <div class="item__description">
+      <textarea
+        rows="6"
+        class="item__description-area"
+        (click)="stopPropagation($event)"
+        [(ngModel)]="tempDescription" >
+
+      </textarea>
+<!--      <span>{{ todoItem.description }}</span>-->
+    </div>
+  }
 </div>
