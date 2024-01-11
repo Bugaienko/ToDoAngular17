@@ -72,4 +72,8 @@ export class AppComponent {
 
     this.todoGroups.push(tempGroup);
   }
+
+  public handleChangeTitle(value: {value: string, index: number}) {
+    this.todoGroups[value.index].title = value.value;
+  }
 }

@@ -4,15 +4,16 @@
     <div class="group__title-name">
       @if (isShowTitle) {
         <h2>{{ todoGroup.title }}</h2>
-        <button (click)="isShowTitle = !isShowTitle"  class="button-edit">Edit</button>
+        <button (click)="isShowTitle = false"  class="button-edit">Edit</button>
       } @else {
         <input type="text" class="input"
-               [(ngModel)]="todoGroup.title"
-               (blur)="isShowTitle = !isShowTitle"
-               (keyup.enter)="isShowTitle = !isShowTitle"
+               [(ngModel)]="groupTitle"
+               (blur)="onEnterValue()"
+               (keyup.enter)="onEnterValue()"
                (focus)="selectInputText($event)"
+               placeholder="Введите название группы..."
         />
-        <button (click)="isShowTitle = !isShowTitle"  class="button-edit">Save</button>
+        <button (click)="onEnterValue()"  class="button-edit">Save</button>
       }
     </div>
     <div class="group__title-underline"></div>
