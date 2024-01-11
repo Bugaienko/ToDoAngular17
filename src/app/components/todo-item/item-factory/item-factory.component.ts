@@ -16,7 +16,7 @@ import {TodoStatus} from "../../../../interfaces/todo-group.interface";
     ItemDoneComponent,
   ],
   templateUrl: './item-factory.component.html',
-  styleUrls: ['./item-factory.component.css', '../todo-base.scss']
+  styleUrls: ['./item-factory.component.scss', '../todo-base.scss']
 })
 export class ItemFactoryComponent extends TodoItemBase {
   protected readonly TodoStatus = TodoStatus;

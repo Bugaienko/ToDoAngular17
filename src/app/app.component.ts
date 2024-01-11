@@ -14,7 +14,7 @@ import {TodoGroup, TodoStatus} from "../interfaces/todo-group.interface";
 
   ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.scss'
 })
 export class AppComponent {
 
@@ -30,8 +30,46 @@ export class AppComponent {
             description: 'Делаем планировщик задач',
             status: TodoStatus.IN_PROGRESS
           },
+          {
+            title: 'Сделать вторую часть',
+            description: 'Делаем планировщик задач',
+            status: TodoStatus.NOT_STARTED
+          },
+          {
+            title: 'Освоить Angular',
+            description: 'Делаем планировщик задач',
+            status: TodoStatus.DONE
+          },
+        ]
+      },
+      {
+        title: 'NOT_STARTED',
+        items: [
+          {
+            title: 'Сделать вторую часть',
+            description: 'Делаем планировщик задач',
+            status: TodoStatus.NOT_STARTED
+          },
+        ]
+      },
+      {
+        title: 'DONE',
+        items: [
+          {
+            title: 'Освоить Angular',
+            description: 'Делаем планировщик задач',
+            status: TodoStatus.DONE
+          },
         ]
       }
     ];
+  }
+
+  public addGroup() {
+    let tempGroup: TodoGroup = {
+      title: ''
+    }
+
+    this.todoGroups.push(tempGroup);
   }
 }

@@ -5,11 +5,14 @@
 
 <main>
 
+  <div class="main">
+    <div class="main__controls">
+      <button (click)="addGroup()" class="button">Добавить группу</button>
+    </div>
+  </div>
+
   @for (group of todoGroups; track todoGroups; let i = $index) {
-
-    <app-todo-group [index]="i" [todoGroup]="group">
-
-    </app-todo-group>
+    <app-todo-group [index]="i" [todoGroup]="group"></app-todo-group>
   }
 
 </main>
