@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterOutlet} from '@angular/router';
 import {TodoGroupComponent} from "./components/todo-group/todo-group.component";
-import {TodoGroup, TodoStatus} from "../interfaces/todo-group.interface";
+import {TodoGroup, TodoItem, TodoStatus} from "../interfaces/todo-group.interface";
 
 @Component({
   selector: 'app-root',
@@ -80,5 +80,12 @@ export class AppComponent {
   public handleDeleteGroup(index: number){
     // console.log('Delete group:' + index)
     this.todoGroups.splice(index, 1);
+  }
+
+  handleAddNewItem(value: { todoItem: TodoItem; index: number }) {
+
+    this.todoGroups[value.index].items = this.todoGroups[value.index].items || [];
+    this.todoGroups[value.index].items?.push(value.todoItem);
+
   }
 }

@@ -24,9 +24,14 @@
     <div class="group__title-underline"></div>
   </div>
 
-  <div class="group_items">
+  <div class="group__items">
     @for (item of todoGroup.items; track todoGroup.items; let i = $index) {
       <app-item-factory [index]="i" [todoItem]="item"></app-item-factory>
     }
+
+    <input class="input" type="text" placeholder="Новая задача..."
+           #newTodo
+           (keyup.enter)="addNewTodo(newTodo.value); newTodo.value=''"
+    >
   </div>
 </div>

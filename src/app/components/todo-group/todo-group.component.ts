@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CommonModule} from "@angular/common";
 import {TodoItemBase} from "../todo-item/todo-item-base.directive";
-import {TodoGroup} from "../../../interfaces/todo-group.interface";
+import {TodoGroup, TodoItem, TodoStatus} from "../../../interfaces/todo-group.interface";
 import {ItemFactoryComponent} from "../todo-item/item-factory/item-factory.component";
 import {FormsModule} from "@angular/forms";
 
@@ -30,6 +30,8 @@ export class TodoGroupComponent implements OnInit {
 
   @Output() deleteGroup = new EventEmitter<number>;
 
+  @Output() addNewItem = new EventEmitter<{ todoItem: TodoItem, index: number }>;
+
   public isShowTitle = true;
 
   public groupTitle?: string;
@@ -53,6 +55,18 @@ export class TodoGroupComponent implements OnInit {
 
   public onDeleteGroup() {
     this.deleteGroup.emit(this.index);
+  }
+
+  public addNewTodo(value: string) {
+    console.log('value ' + value)
+    this.addNewItem.emit({
+      todoItem: {
+        title: value,
+        status: TodoStatus.NOT_STARTED,
+        description: ''
+      },
+      index: this.index
+    });
   }
 
 }
