@@ -2,11 +2,32 @@
   <div class="item__header">
     <img class="item__img" ngSrc="assets/icons/done.svg" alt="done" height="35" width="35">
     <span class="item__title">{{ todoItem.title }}</span>
+    <span class="item__hide"
+          [ngClass]="isShowDescription ? 'item__alt-hide' : ''"
+    >></span>
   </div>
 
   @if (isShowDescription) {
-    <div class="item__description">
-      <span>{{ todoItem.description }}</span>
+    <div class="item__description" (click)="stopPropagation($event)">
+      @if (isDescriptionEditing) {
+        <textarea
+          rows="6"
+          class="item__description-area"
+          (click)="stopPropagation($event)"
+          [(ngModel)]="tempDescription"
+          #value
+          (keyup.enter)="pressEnter(value.value)"
+        ></textarea>
+      } @else {
+        <span>{{ todoItem.description }}</span>
+        <button
+          (click)="isDescriptionEditing = !isDescriptionEditing"
+          class="button-edit"
+        >
+          edit
+        </button>
+      }
+
     </div>
   }
 </div>

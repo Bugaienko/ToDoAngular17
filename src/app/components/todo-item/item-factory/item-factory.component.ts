@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {CommonModule} from "@angular/common";
 import {ItemInProgressComponent} from "../item-in-progress/item-in-progress.component";
 import {ItemNotStartedComponent} from "../item-not-started/item-not-started.component";
@@ -20,4 +20,12 @@ import {TodoStatus} from "../../../../interfaces/todo-group.interface";
 })
 export class ItemFactoryComponent extends TodoItemBase {
   protected readonly TodoStatus = TodoStatus;
+
+  @Output()
+  public eventForGroup = new EventEmitter<{value: string, indexGroup: number, indexItem: number}>;
+
+  handleTodoEventDescr(event: { value: string; indexGroup: number }) {
+    // console.log('TodoItem: ' + event.value);
+    this.eventForGroup.emit({value: event.value, indexGroup: event.indexGroup, indexItem: this.index})
+  }
 }

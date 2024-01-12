@@ -7,16 +7,37 @@
     >></span>
   </div>
 
-  @if (!isShowDescription) {
-    <div class="item__description">
-      <textarea
-        rows="6"
-        class="item__description-area"
-        (click)="stopPropagation($event)"
-        [(ngModel)]="tempDescription" >
+  @if (isShowDescription) {
+    <div class="item__description" (click)="stopPropagation($event)">
+      @if (isDescriptionEditing) {
+        <textarea
+          rows="6"
+          class="item__description-area"
+          (click)="stopPropagation($event)"
+          [(ngModel)]="tempDescription"
+          #value
+          (keyup.enter)="pressEnter(value.value)"
+        ></textarea>
+      } @else {
+        <span>{{ todoItem.description }}</span>
+        <button (click)="isDescriptionEditing = !isDescriptionEditing" class="button-edit">edit</button>
+      }
 
-      </textarea>
-<!--      <span>{{ todoItem.description }}</span>-->
     </div>
   }
+
+<!--  @if (isShowDescription) {-->
+<!--    <div class="item__description">-->
+<!--      <textarea-->
+<!--        rows="6"-->
+<!--        class="item__description-area"-->
+<!--        (click)="stopPropagation($event)"-->
+<!--        [(ngModel)]="tempDescription"-->
+<!--      >-->
+
+<!--      </textarea>-->
+<!--&lt;!&ndash;      <span>{{ todoItem.description }}</span>&ndash;&gt;-->
+<!--    </div>-->
+<!--  }-->
+
 </div>

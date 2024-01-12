@@ -88,4 +88,17 @@ export class AppComponent {
     this.todoGroups[value.index].items?.push(value.todoItem);
 
   }
+
+  protected readonly event = event;
+
+  public handleDescription(event: {value: string, indexItem: number, indexGroup: number}) {
+    // console.log('App comp event' + event.value + "; indexGr: " +event.indexGroup + "; indItem: " + event.indexItem);
+
+    // @ts-ignore
+    this.todoGroups[event.indexGroup].items[event.indexItem].description = event.value;
+
+    // @ts-ignore
+    // console.log("значение new: " + this.todoGroups[event.indexGroup].items[event.indexItem].description)
+
+  }
 }

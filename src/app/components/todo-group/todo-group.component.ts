@@ -32,6 +32,10 @@ export class TodoGroupComponent implements OnInit {
 
   @Output() addNewItem = new EventEmitter<{ todoItem: TodoItem, index: number }>;
 
+  @Output()
+  eventGroupChangeDescription = new EventEmitter<{value: string, indexItem: number, indexGroup: number}>;
+
+
   public isShowTitle = true;
 
   public groupTitle?: string;
@@ -69,4 +73,8 @@ export class TodoGroupComponent implements OnInit {
     });
   }
 
+  public handleChangeDescription(event: {value: string, indexItem: number}) {
+    // console.log('Пришел even в to-do' + event.value)
+    this.eventGroupChangeDescription.emit({value: event.value, indexItem: event.indexItem, indexGroup: this.index});
+  }
 }
