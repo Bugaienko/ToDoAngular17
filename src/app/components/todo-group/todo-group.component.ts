@@ -16,7 +16,7 @@ import {FormsModule} from "@angular/forms";
 
   ],
   templateUrl: './todo-group.component.html',
-  styleUrl: './todo-group.component.scss'
+  styleUrls: ['../todo-item/todo-base.scss', './todo-group.component.scss']
 })
 export class TodoGroupComponent implements OnInit {
 
@@ -34,6 +34,9 @@ export class TodoGroupComponent implements OnInit {
 
   @Output()
   eventGroupChangeDescription = new EventEmitter<{value: string, indexItem: number, indexGroup: number}>;
+
+  @Output() eventChangeStatus = new EventEmitter<{ status: number; indexItem: number; indexGroup: number }>
+  @Output() deleteItemGroup = new EventEmitter<{indexItem: number, indexGroup: number}>
 
 
   public isShowTitle = true;
@@ -76,5 +79,14 @@ export class TodoGroupComponent implements OnInit {
   public handleChangeDescription(event: {value: string, indexItem: number}) {
     // console.log('Пришел even в to-do' + event.value)
     this.eventGroupChangeDescription.emit({value: event.value, indexItem: event.indexItem, indexGroup: this.index});
+  }
+
+  handleChangeStatus(event: { status: number; indexItem: number }) {
+
+    this.eventChangeStatus.emit({status: event.status, indexItem: event.indexItem, indexGroup: this.index})
+  }
+
+  handleDeleteItem(indexItem: number) {
+    this.deleteItemGroup.emit({indexItem: indexItem, indexGroup: this.index})
   }
 }

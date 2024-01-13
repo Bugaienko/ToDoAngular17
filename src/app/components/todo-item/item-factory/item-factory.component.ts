@@ -24,8 +24,19 @@ export class ItemFactoryComponent extends TodoItemBase {
   @Output()
   public eventForGroup = new EventEmitter<{value: string, indexGroup: number, indexItem: number}>;
 
+  @Output() changeStatusEventGroup = new EventEmitter<{status: number, indexItem: number}>;
+  @Output() deleteItemEmitFactory = new EventEmitter<number>
+
   handleTodoEventDescr(event: { value: string; indexGroup: number }) {
     // console.log('TodoItem: ' + event.value);
     this.eventForGroup.emit({value: event.value, indexGroup: event.indexGroup, indexItem: this.index})
+  }
+
+  handleChangeStatus(event: { status: number; indexItem: number }) {
+    this.changeStatusEventGroup.emit(event);
+  }
+
+  handleDeleteItem(index: number) {
+    this.deleteItemEmitFactory.emit(index);
   }
 }

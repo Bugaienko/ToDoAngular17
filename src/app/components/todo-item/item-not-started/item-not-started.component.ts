@@ -12,7 +12,7 @@ import {FormsModule} from "@angular/forms";
     NgClass
   ],
   templateUrl: './item-not-started.component.html',
-  styleUrls: ['./item-not-started.component.scss', '../todo-base.scss']
+  styleUrls: ['../todo-base.scss', './item-not-started.component.scss', ]
 })
 export class ItemNotStartedComponent extends TodoItemBase{
 

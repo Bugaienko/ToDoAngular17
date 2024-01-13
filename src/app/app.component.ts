@@ -73,11 +73,11 @@ export class AppComponent {
     this.todoGroups.push(tempGroup);
   }
 
-  public handleChangeTitle(value: {value: string, index: number}) {
+  public handleChangeTitle(value: { value: string, index: number }) {
     this.todoGroups[value.index].title = value.value;
   }
 
-  public handleDeleteGroup(index: number){
+  public handleDeleteGroup(index: number) {
     // console.log('Delete group:' + index)
     this.todoGroups.splice(index, 1);
   }
@@ -91,14 +91,20 @@ export class AppComponent {
 
   protected readonly event = event;
 
-  public handleDescription(event: {value: string, indexItem: number, indexGroup: number}) {
-    // console.log('App comp event' + event.value + "; indexGr: " +event.indexGroup + "; indItem: " + event.indexItem);
-
+  public handleDescription(event: { value: string, indexItem: number, indexGroup: number }) {
     // @ts-ignore
     this.todoGroups[event.indexGroup].items[event.indexItem].description = event.value;
 
-    // @ts-ignore
-    // console.log("значение new: " + this.todoGroups[event.indexGroup].items[event.indexItem].description)
 
+  }
+
+  handleStatus(event: { status: number; indexItem: number; indexGroup: number }) {
+    // @ts-ignore
+    this.todoGroups[event.indexGroup].items[event.indexItem].status = event.status;
+  }
+
+  handleDeleteItem(event: { indexItem: number; indexGroup: number }) {
+    // @ts-ignore
+    this.todoGroups[event.indexGroup].items.splice(event.indexItem, 1);
   }
 }

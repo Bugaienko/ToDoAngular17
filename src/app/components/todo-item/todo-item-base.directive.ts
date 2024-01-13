@@ -11,6 +11,9 @@ export class TodoItemBase implements OnInit {
 
   @Output() eventChangeDescription = new EventEmitter<{ value: string, indexGroup: number }>;
 
+  @Output() changeStatus = new EventEmitter<{status: number, indexItem: number}>
+
+  @Output() deleteItemEmit = new EventEmitter<number>;
 
   public isShowDescription = false;
 
@@ -29,5 +32,12 @@ export class TodoItemBase implements OnInit {
     this.isDescriptionEditing = false;
   }
 
+  public changeStatusEvent(newStatus: number) {
+    this.changeStatus.emit({status: newStatus, indexItem: this.index})
+  }
+
+  public deleteItem() {
+    this.deleteItemEmit.emit(this.index);
+  }
 
 }

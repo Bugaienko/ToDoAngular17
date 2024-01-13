@@ -1,4 +1,4 @@
-<header>
+<header xmlns="http://www.w3.org/1999/html">
   <h1>Todo List</h1>
   <span>Todo with Angular17 with standalone components</span>
 </header>
@@ -11,15 +11,19 @@
     </div>
   </div>
 
-  @for (group of todoGroups; track todoGroups; let i = $index) {
-    <app-todo-group
-      [index]="i"
-      [todoGroup]="group"
-      (changeTitleEvent)="handleChangeTitle($event)"
-      (deleteGroup)="handleDeleteGroup($event)"
-      (addNewItem)="handleAddNewItem($event)"
-      (eventGroupChangeDescription)="handleDescription($event)"
-    ></app-todo-group>
-  }
+  <div class="section__groups">
+    @for (group of todoGroups; track group; let i = $index) {
+      <app-todo-group
+        [index]="i"
+        [todoGroup]="group"
+        (changeTitleEvent)="handleChangeTitle($event)"
+        (deleteGroup)="handleDeleteGroup($event)"
+        (addNewItem)="handleAddNewItem($event)"
+        (eventGroupChangeDescription)="handleDescription($event)"
+        (eventChangeStatus)="handleStatus($event)"
+        (deleteItemGroup)="handleDeleteItem($event)"
+      ></app-todo-group>
+    }
 
+  </div>
 </main>

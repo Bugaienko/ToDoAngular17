@@ -4,6 +4,8 @@
       [index]="index"
       [todoItem]="todoItem"
       (eventChangeDescription)="handleTodoEventDescr($event)"
+      (changeStatus)="handleChangeStatus($event)"
+      (deleteItemEmit)="handleDeleteItem($event)"
     ></app-item-in-progress>
   }
   @case (TodoStatus.NOT_STARTED) {
@@ -11,6 +13,8 @@
       [index]="index"
       [todoItem]="todoItem"
       (eventChangeDescription)="handleTodoEventDescr($event)"
+      (changeStatus)="handleChangeStatus($event)"
+      (deleteItemEmit)="handleDeleteItem($event)"
     ></app-item-not-started>
   }
   @case (TodoStatus.DONE) {
@@ -18,7 +22,13 @@
       [index]="index"
       [todoItem]="todoItem"
       (eventChangeDescription)="handleTodoEventDescr($event)"
+      (changeStatus)="handleChangeStatus($event)"
+      (deleteItemEmit)="handleDeleteItem($event)"
     ></app-item-done>
+  }
+
+  @default {
+    <span>Статус компонента не известен {{todoItem.status}}</span>
   }
 
 }
